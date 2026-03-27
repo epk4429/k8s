@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sk002-ingress-canary
+  namespace: skala3-ai1
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "10"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: public-nginx
+  rules:
+    - host: ingress.skala25a.project.skala-ai.com
+      http:
+        paths:
+          - path: /sk002(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: sk002-v2-service
+                port:
+                  number: 8080

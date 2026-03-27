@@ -1,17 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sk002
+  name: sk002-v1
   namespace: skala3-ai1
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: sk002
+      version: v1
   template:
     metadata:
       labels:
         app: sk002
+        version: v1
     spec:
       imagePullSecrets:
         - name: harbor-pull-secret
