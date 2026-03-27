@@ -21,7 +21,7 @@ spec:
         - name: sk002-container
           image: amdp-registry.skala-ai.com/skala26a-ai1/a3002:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           volumeMounts:
             - name: sk002-storage
               mountPath: /data
